@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>每日一事</title>
+    <meta
+      name="description"
+      content="记录每天完成的一件事，可以作为浏览器起始页"
+    />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.616pic.com%2Fbg_w1180%2F00%2F00%2F08%2Fvu8gNyD9YZ.jpg&refer=http%3A%2F%2Fpic.616pic.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1658743188&t=3756527ebd96bfa94d97be536ea81dab");
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #demo {
+        width: 360px;
+        height: 30px;
+        text-align: center;
+        background: 0;
+        font-size: 21px;
+      }
+      #save {
+        width: 80px;
+        height: 30px;
+        border: 1px solid black;
+        background-color: rgb(225, 226, 227);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <!--记录区-->
+      <input
+        style="
+          margin-left: 230px;
+          margin-top: 260px;
+          border: 2px solid rgba(0, 0, 0, 0.58);
+        "
+        type="text"
+        id="demo"
+        placeholder="请写入今天完成的一件事"
+      />
+      <!--保存区-->
+      <button style="margin-top: 260px" id="save" onclick="sav()">save</button>
+      <p id="demo"></p>
+    </div>
+    <script>
+      let demo = document.getElementById("demo");
+      let btn = document.getElementById("save");
+      btn.addEventListener("click", sav);
+
+      function sav() {
+        btn.innerText = "😉";
+        window.sessionStorage.setItem("dem", demo.value);
+      }
+      let data = window.sessionStorage.getItem("dem");
+      if (data) {
+        document.getElementById("demo").value = data;
+      }
+    </script>
+  </body>
+</html>
